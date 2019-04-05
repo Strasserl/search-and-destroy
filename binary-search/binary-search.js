@@ -2,7 +2,26 @@
 
 // Complete this algo
 const binarySearch = (array, target) => {
-	
+  let rootIndex = Math.floor(array.length / 2);
+  let leftSide = array.slice(0, rootIndex);
+  let rightSide = array.slice(rootIndex);
+
+  if (array[rootIndex] === target) {
+    return true;
+  } else if (target < array[rootIndex]) {
+    if (leftSide.length > 1) {
+      return binarySearch(leftSide, target);
+    }
+  } else {
+    if (rightSide.length > 1) {
+      return binarySearch(rightSide, target);
+    }
+  }
+  if (leftSide[0] === target || rightSide[0] === target) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 /*
@@ -14,4 +33,4 @@ const binarySearch = (array, target) => {
 
 */
 
-module.exports = binarySearch
+module.exports = binarySearch;
